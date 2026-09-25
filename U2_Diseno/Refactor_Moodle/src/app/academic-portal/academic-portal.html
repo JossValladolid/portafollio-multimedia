@@ -1,0 +1,101 @@
+<div class="portal">
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="logo_blanco2.png" alt="pene">
+      </div>
+      <button type="button" class="lang-switch">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M3 12h18M12 3c2.5 2.7 3.8 6 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-6-3.8-9s1.3-6.3 3.8-9z"></path>
+        </svg>
+        Español
+      </button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="content-col">
+      <div class="hero">
+        <div class="hero-copy">
+          <h1>Educación Tecnológica</h1>
+          <p class="hero-sub">
+            En la Escuela Politécnica de Guadalajara se cuentan con carreras tanto de Bachillerato Tecnológico y de Tecnólogos.
+          </p>
+        </div>
+        <svg class="hero-graphic" viewBox="0 0 320 240" aria-hidden="true">
+          <circle cx="250" cy="58" r="70" fill="rgba(255,255,255,0.08)"></circle>
+          <circle cx="58" cy="188" r="46" fill="rgba(255,255,255,0.10)"></circle>
+          <path d="M40 118 L150 68 L260 118 L150 168 Z" fill="rgba(255,255,255,0.14)"></path>
+        </svg>
+        <div class="button-container">
+          <button class="know-more">Saber más</button>
+        </div>
+      </div>
+
+      <div class="categories">
+        <h2>Categorías de cursos</h2>
+        <ul class="category-list">
+          <li class="individual-container" *ngFor="let cat of categories">
+            <span class="category-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+                <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+              </svg>
+            </span>
+            <span class="category-name">{{ cat.name }}</span>
+            <div class="category-container"></div>
+            <span class="category-count">{{ cat.count }} cursos</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <aside class="login-col">
+      <div class="login-card">
+        <h2>Ingresar a Escuela Politécnica de Guadalajara</h2>
+ 
+        <form (ngSubmit)="onSubmit()" novalidate>
+          <div class="field">
+            <label for="username">Usuario</label>
+            <input
+              id="username"
+              name="username"
+              type="text"
+              autocomplete="username"
+              [(ngModel)]="username"
+            />
+          </div>
+ 
+          <div class="field">
+            <label for="password">Contraseña</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              [(ngModel)]="password"
+            />
+          </div>
+ 
+          <p class="form-error" *ngIf="errorMessage">{{ errorMessage }}</p>
+ 
+          <button type="submit" class="cta" [disabled]="submitting">
+            {{ submitting ? 'Ingresando…' : 'Iniciar sesión' }}
+          </button>
+        </form>
+ 
+        <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+ 
+        <div class="divider"></div>
+ 
+        <div class="guest-access">
+          <p>Algunos cursos pueden permitir el acceso como invitado.</p>
+          <button type="button" class="secondary-btn" (click)="onGuestAccess()">
+            Entrar como invitado
+          </button>
+        </div>
+      </div>
+
+    </aside>
+  </main>
+</div>
