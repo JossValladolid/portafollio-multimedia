@@ -2,11 +2,12 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": false
   },
   "newProjectRoot": "projects",
   "projects": {
-    "epg-academic-portal": {
+    "moodle-refactor": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:class": {
@@ -84,10 +85,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "epg-academic-portal:build:production"
+              "buildTarget": "moodle-refactor:build:production"
             },
             "development": {
-              "buildTarget": "epg-academic-portal:build:development"
+              "buildTarget": "moodle-refactor:build:development"
             }
           },
           "defaultConfiguration": "development"

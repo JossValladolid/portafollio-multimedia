@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { AcademicPortal } from './academic-portal/academic-portal';
+import { MoodleHome } from './home/home';
 
 @Component({
   selector: 'app-root',
-  imports: [AcademicPortal],
+  imports: [MoodleHome],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

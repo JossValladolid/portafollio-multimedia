@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -8,12 +8,12 @@ interface CourseCategory {
 }
 
 @Component({
-  selector: 'app-academic-portal',
+  selector: 'app-moodle',
   imports: [CommonModule, FormsModule],
-  templateUrl: './academic-portal.html',
-  styleUrl: './academic-portal.css',
+  templateUrl: './home.html',
+  styleUrl: './home.css',
 })
-export class AcademicPortal {
+export class MoodleHome implements OnInit, OnDestroy {
   username = '';
   password = '';
   submitting = false;
@@ -21,6 +21,10 @@ export class AcademicPortal {
 
   @Output() loginSubmit = new EventEmitter<{ username: string; password: string }>();
   @Output() guestAccess = new EventEmitter<void>();
+
+  heroImages: string[] = ['hero-bg-1.jpg', 'hero-bg-2.jpg', 'hero-bg-3.jpg'];
+  activeHeroImage = 0;
+  private heroInterval?: ReturnType<typeof setInterval>;
 
   categories: CourseCategory[] = [
     { name: 'Cooordinacion Académica', count: 18 },
@@ -49,5 +53,15 @@ export class AcademicPortal {
 
   onGuestAccess(): void {
     this.guestAccess.emit();
+  }
+
+  ngOnInit(): void {
+    this.heroInterval = setInterval(() => {
+      this.activeHeroImage = (this.activeHeroImage + 1) % this.heroImages.length;
+    }, 5000);
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.heroInterval);
   }
 }
